@@ -14,14 +14,14 @@ def get_random_string(length):
     return ''.join(random.choice(letters) for i in range(length))
 
 def get_request(endpoint):
-    response = requests.get(settings.SQ_BASE_URL + '/' + endpoint, auth=(settings.SQ_TOKEN, ''))
+    response = requests.get(settings.SQ_API_URL + '/' + endpoint, auth=(settings.SQ_TOKEN, ''))
     if not response.status_code == 200:
         print('Unexpected error ocurred, the request failed with HTTP code: {0}'.format(response.status_code))
         raise UserCreationError(response)
     return response
 
 def post_request(endpoint, data):
-    response = requests.post(settings.SQ_BASE_URL + '/' + endpoint, auth=(settings.SQ_TOKEN, ''), data = data)
+    response = requests.post(settings.SQ_API_URL + '/' + endpoint, auth=(settings.SQ_TOKEN, ''), data = data)
     if not response.status_code == 200:
         print('Unexpected error ocurred, the request failed with HTTP code: {0}'.format(response.status_code))
         raise UserCreationError(response)
