@@ -12,6 +12,7 @@ google-auth-httplib2 = "*"
 google-auth-oauthlib = "*"
 pygsheets = "*"
 numpy = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.8"
