@@ -2,3 +2,4 @@
 .DS_Store
 sheets.*
 __pycache__
+client_secret.json
