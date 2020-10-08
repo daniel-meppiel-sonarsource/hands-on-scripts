@@ -7,6 +7,11 @@ verify_ssl = true
 
 [packages]
 requests = "*"
+google-api-python-client = "*"
+google-auth-httplib2 = "*"
+google-auth-oauthlib = "*"
+pygsheets = "*"
+numpy = "*"
 
 [requires]
 python_version = "3.8"
