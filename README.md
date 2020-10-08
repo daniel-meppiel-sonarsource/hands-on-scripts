@@ -11,7 +11,7 @@ Users will be created with a random password of 6 characters, and a login matchi
 ## Required Setup
 The steps below need to be taken to make the script work:
 
-* Obtain a client_secret.json file from myself and put it on your project root folder
+* Obtain a `client_secret.json` file from myself and put it on your project root folder. This will allow the program to generate Google Spreadsheets in your GDrive.
 * Create a `.env` file in the project root folder, and add the following variables:
 
     ```
