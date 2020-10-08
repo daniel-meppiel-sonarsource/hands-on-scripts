@@ -18,7 +18,7 @@ class GSheetsService:
         data = np.empty((3,len(credentials.items())+1), dtype=object)
         data[0][0]= 'Login'
         data[0][1]= 'Password'
-        data[0][2]= 'Taken?'
+        data[0][2]= 'Used By'
         i = 0
         for login, password in credentials.items():
             i+=1
