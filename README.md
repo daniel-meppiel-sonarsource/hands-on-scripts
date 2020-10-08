@@ -12,10 +12,10 @@ Users will be created with a random password of 6 characters, and a login matchi
 The steps below need to be taken to make the script work:
 
 * Obtain a client_secret.json file from myself and put it on your project root folder
-* Create a `.env` file in the project root folder, and add the following variables: SQ_URL, SQ_TOKEN, PASSWORD_LENGTH, e.g:
+* Create a `.env` file in the project root folder, and add the following variables:
 
+    ```
     SQ_URL=https://mysq.ngrok.io
-    SQ_TOKEN='verysecureandencryptedtokenwithadminrights'
+    SQ_TOKEN=verysecureandencryptedtokenwithadminrights
     PASSWORD_LENGTH=6
-
 And you are ready to go! To see the full usage documentation, run: `python3 main.py --help`
