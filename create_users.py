@@ -37,23 +37,37 @@ def create_users(num):
         users_dict[login] = password
     return users_dict
 
-def deactivate_users(num=10000):
+def search_user(login):
+    return get_request('users/search?q={0}'.format(login))
+
+def deactivate_users(num):
     for i in range(num):
         login = 'user_{}'.format(i)
+        response = search_user(login)
+        if not response.status_code == 200:
+            print('An unexpected error ocurred: {0}'.format(response.text))
+            break
+        elif not response.json()['users']:
+            print("Stopping user deactivation: {0} was not found in SonarQube".format(login))
+            break
+        elif not response.json()['users'][0]['active']:
+            print("Stopping user deactivation: {0} was already inactive".format(login))
+            break
+        print("Deactivating {0}...".format(login))
         response = post_request('users/deactivate', {'login': login,})
         if not response.status_code == 200:
-            print('Stopping user deactivation due to: {0}'.format(response.text))
+            print('An unexpected error ocurred:{0}'.format(response.text))
             break
+            
 
 if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser("hands-on-user-creation")
     parser.add_argument("--delete", help='Will delete all hands-on exercise related users on the SonarQube server.', action='store_true')
-    parser.add_argument("--num", help='Number of users to create when --delete flag is not present. Default value is 30.', action='store', default=30)
+    parser.add_argument("--num", help='Number of users to create when --delete flag is not present. Default value is 30.', type=int, action='store', default=30)
     parser.add_argument("--title", help='Name of the new Google Spreadsheet that will be created and written with the newly created user credentials, when the --delete flag is not present. Default is "Hands-On Exercises User List"', action='store', default='Hands-On Exercises User List')
     args = parser.parse_args()
-    print(args)
 
     if not args.delete:
         print('Creating {} new SonarQube users...'.format(args.num))
@@ -66,7 +80,7 @@ if __name__ == "__main__":
         gsheetService.write_users(users)
         print('EXECUTION SUCCESS')
     else:
-        print('Deleting all users with a login matching pattern "user_X"...')
-        deactivate_users()
+        print('Deactivating all users with a login matching pattern "user_X"...')
+        deactivate_users(args.num)
 
 

@@ -14,15 +14,15 @@ class GSheetsService:
 
     def write_users(self, credentials):
         # Open Worksheet
-        i = 2
         wks = self.spreadsheet.sheet1
-        wks.update_value('A1', 'Login')
-        wks.update_value('B1', 'Password')
-        wks.update_value('C1', 'Taken?')
-        wks.cell('A1').set_text_format('bold', True)
-        wks.cell('B1').set_text_format('bold', True)
-        wks.cell('C1').set_text_format('bold', True)
+        data = np.empty((3,len(credentials.items())+1), dtype=object)
+        data[0][0]= 'Login'
+        data[0][1]= 'Password'
+        data[0][2]= 'Taken?'
+        i = 0
         for login, password in credentials.items():
-            wks.update_value('A{}'.format(i), login)
-            wks.update_value('B{}'.format(i), password)
             i+=1
+            data[i][0]=login
+            data[i][1]=password
+            data[i][2]=''
+        wks.insert_rows(row=0, number=i, values=data.tolist())
