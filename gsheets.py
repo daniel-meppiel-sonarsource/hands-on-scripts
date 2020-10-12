@@ -15,7 +15,7 @@ class GSheetsService:
     def write_users(self, credentials):
         # Open Worksheet
         wks = self.spreadsheet.sheet1
-        data = np.empty((3,len(credentials.items())+1), dtype=object)
+        data = np.empty((len(credentials.items())+1, 3), dtype=object)
         data[0][0]= 'Login'
         data[0][1]= 'Password'
         data[0][2]= 'Used By'
