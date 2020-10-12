@@ -17,5 +17,6 @@ The steps below need to be taken to make the script work:
     ```
     SQ_URL=https://mysq.ngrok.io
     SQ_TOKEN=verysecureandencryptedtokenwithadminrights
+    GROUP_NAME=training-users
     PASSWORD_LENGTH=6
 And you are ready to go! To see the full usage documentation, run: `python3 main.py --help`
