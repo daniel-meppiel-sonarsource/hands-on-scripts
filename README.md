@@ -11,7 +11,8 @@ Users will be created with a random password of 6 characters, and a login matchi
 ## Required Setup
 The steps below need to be taken to make the script work:
 
-* Obtain a `client_secret.json` file from myself and put it on your project root folder. This will allow the program to generate Google Spreadsheets in your GDrive.
+* Make sure you install [Python 3.8+](https://www.python.org/downloads/), [Pip](https://pip.pypa.io/en/stable/installing/) and [Pipenv](https://pypi.org/project/pipenv/)
+* Obtain the `client_secret.json` from this [restricted link](https://drive.google.com/file/d/1n3o7E-fBmo5ksMRaBVDBNQG3QQlgIGeo/view?usp=sharing) and put it on your project root folder. This will allow the program to generate Google Spreadsheets in your GDrive.
 * Create a `.env` file in the project root folder, and add the following variables:
 
     ```
@@ -20,6 +21,17 @@ The steps below need to be taken to make the script work:
     GROUP_NAME=training-users
     PASSWORD_LENGTH=6
 
-* Install dependencies with `pipenv`
+* Install dependencies by running `pipenv install` on the root folder. 
 
-And you are ready to go! To see the full usage documentation, run: `python3 main.py --help`
+And you are ready to go! 
+
+    ```
+    # Activate the pipenv environment
+    pipenv shell
+    # Get the docs
+    python main.py --help
+    # Create 20 users for your training session
+    python main.py --num 20
+    # Delete them
+    python main.py --delete
+
