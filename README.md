@@ -17,7 +17,7 @@ The steps below need to be taken to make the script work:
 
     ```
     SQ_URL=https://mysq.ngrok.io
-    SQ_TOKEN=verysecureandencryptedtokenwithadminrights
+    SQ_TOKEN=sq_token_with_admin_rights
     GROUP_NAME=training-users
     PASSWORD_LENGTH=6
 
@@ -25,13 +25,15 @@ The steps below need to be taken to make the script work:
 
 And you are ready to go! 
 
-    ```
-    # Activate the pipenv environment
-    pipenv shell
-    # Get the docs
-    python main.py --help
-    # Create 20 users for your training session
-    python main.py --num 20
-    # Delete them
-    python main.py --delete
+## Usage
+
+```
+# Activate the pipenv environment
+pipenv shell
+# Get the docs
+python main.py --help
+# Create 20 users for your training session
+python main.py --num 20
+# Delete them
+python main.py --delete
 
