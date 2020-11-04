@@ -46,7 +46,7 @@ class Group(object):
         self.name = name
         self.description = description
         group_json = post_request('user_groups/create', {'name': self.name, 'description':self.description}).json()['group']
-        self.id = group_json['uuid']
+        self.id = group_json['id']
 
     def add_user(self, login):
         return post_request('user_groups/add_user', {'login': login, 'name':self.name})
